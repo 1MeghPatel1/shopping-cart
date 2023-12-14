@@ -1,0 +1,137 @@
+.auth {
+	&-page {
+		min-width: 100dvw;
+		min-height: 100dvh;
+		@include flex-center;
+	}
+
+	&-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 90rem;
+		height: max-content;
+		padding: 7rem 3rem;
+		background-color: var(--color-white-cool);
+		box-shadow: var(--box-shadow-light);
+		background-image: linear-gradient(
+			105deg,
+			#fff 0%,
+			#fff 45%,
+			var(--primary-brand-color) 45%
+		);
+		border-radius: 15px;
+
+		@include respond("tab-land") {
+			flex-direction: column;
+			background-image: linear-gradient(
+				to bottom,
+				#fff 0%,
+				#fff 30%,
+				var(--primary-brand-color) 30%
+			);
+			padding: 4rem 3rem;
+			height: 100dvh;
+			justify-content: center;
+			border-radius: 0;
+		}
+	}
+
+	&-logo {
+		position: relative;
+		width: 25rem;
+		border-radius: 50%;
+		flex: 0 0 30%;
+
+		@include respond("tab-port") {
+			width: 27rem;
+		}
+
+		&__img {
+			width: 100%;
+			border-radius: 50%;
+		}
+	}
+
+	&-form {
+		padding: 0rem 4rem;
+		border-radius: 20px;
+		flex: 0 0 50%;
+		color: var(--color-white-cool);
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+
+		@include respond("tab-port") {
+			padding: 3rem 4rem;
+		}
+
+		svg {
+			position: absolute;
+			bottom: 7px;
+			right: 7px;
+			cursor: pointer;
+
+			path {
+				fill: var(--primary-brand-color);
+			}
+
+			&:hover path {
+				fill: var(--secondary-brand-color);
+			}
+		}
+
+		&__heading {
+			font-size: 4rem;
+
+			span {
+				font-style: italic;
+				font-size: 1.4rem;
+			}
+		}
+
+		&__group {
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 1rem;
+			position: relative;
+
+			gap: 0.5rem;
+		}
+		&__label {
+			font-size: 1.5rem;
+		}
+		&__input {
+			font-size: 1.7rem;
+			padding: 0.5rem;
+			border-radius: 5px;
+			border: none;
+
+			&::placeholder {
+				font-size: 1rem;
+				font-style: italic;
+				opacity: 0.8;
+			}
+
+			&:focus {
+				outline: 2px solid var(--color-white-cool);
+				outline-offset: 3px;
+				transition: all 0.1s;
+			}
+		}
+		&__btns {
+			display: flex;
+			gap: 1rem;
+
+			.nav-link {
+				text-decoration: none;
+				font-family: inherit;
+				font-size: 1.4rem;
+			}
+
+			&--login {
+				width: 10rem;
+			}
+		}
+	}
+}

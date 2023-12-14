@@ -1,0 +1,103 @@
+.btn--primary {
+	padding: 1rem 2rem;
+	border-radius: 5px;
+	border: none;
+	color: var(--color-white-cool);
+	background-color: var(--primary-brand-color);
+	cursor: pointer;
+	box-shadow: var(--box-shadow-light);
+	transition: all 0.3s;
+
+	&:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.5);
+	}
+	&:active {
+		transform: translateY(-1px);
+		box-shadow: 0 1.2rem 1.5rem rgba(0, 0, 0, 0.3);
+	}
+}
+
+.btn--primary-2 {
+	padding: 1rem 2rem;
+	border-radius: 5px;
+	border: 1px solid var(--primary-brand-color);
+	color: var(--primary-brand-color);
+	background-color: var(--color-white-cool);
+	cursor: pointer;
+	box-shadow: var(--box-shadow-light);
+	transition: all 0.2s;
+
+	&:hover {
+		background-color: var(--primary-brand-color);
+		color: var(--color-white-cool);
+	}
+
+	path {
+		fill: var(--primary-brand-color);
+	}
+
+	&:hover path {
+		fill: var(--color-white-cool);
+	}
+}
+
+.btn--secondary {
+	padding: 1rem 2rem;
+	border-radius: 5px;
+	border: none;
+	color: #000;
+	background-color: var(--secondary-brand-color);
+	cursor: pointer;
+	box-shadow: var(--box-shadow-light);
+	transition: all 0.3s;
+
+	&:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.5);
+	}
+	&:active {
+		transform: translateY(-2px);
+		box-shadow: 0 1.2rem 1.5rem rgba(0, 0, 0, 0.3);
+	}
+}
+
+.btn--tertiary {
+	padding: 1rem 2rem;
+	border-radius: 5px;
+	border: none;
+	color: #000;
+	background-color: var(--color-white-cool);
+	cursor: pointer;
+	box-shadow: var(--box-shadow-light);
+	transition: all 0.3s;
+
+	&:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.5);
+	}
+	&:active {
+		transform: translateY(-2px);
+		box-shadow: 0 1.2rem 1.5rem rgba(0, 0, 0, 0.3);
+	}
+}
+
+.btn--delete {
+	font-size: 1.3rem;
+	font-style: inherit;
+	padding: 0.7rem 0.9rem;
+	background-color: var(--secondary-brand-color);
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+
+	@include flex-center;
+
+	&:hover {
+		background-color: #bd8d70;
+	}
+
+	path {
+		fill: var(--primary-brand-color);
+	}
+}

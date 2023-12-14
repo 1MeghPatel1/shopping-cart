@@ -1,0 +1,39 @@
+// font-family: 'Montserrat', sans-serif;
+// font-family: 'Nunito', sans-serif;
+// font-family: 'Poppins', sans-serif;
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%;
+	box-sizing: border-box;
+	@include respond("tab-port") {
+		font-size: 57.25%;
+	}
+}
+
+body {
+	font-family: "Nunito", sans-serif;
+}
+
+.sticky {
+	position: sticky;
+	top: -1px;
+	left: 0;
+
+	&-bottom {
+		position: sticky;
+		bottom: -1px;
+		left: 0;
+	}
+}
+
+// .hide {
+// 	display: none !important;
+// }

@@ -1,0 +1,30 @@
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin flex-center-col {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin respond($break-point) {
+	@if $break-point == "tab-land" {
+		@media screen and (max-width: 1000px) {
+			@content;
+		}
+	}
+	@if $break-point == "tab-port" {
+		@media screen and (max-width: 768px) {
+			@content;
+		}
+	}
+	@if $break-point == "phone" {
+		@media screen and (max-width: 450px) {
+			@content;
+		}
+	}
+}

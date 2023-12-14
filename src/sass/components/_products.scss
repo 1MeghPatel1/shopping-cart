@@ -1,0 +1,137 @@
+.products {
+	height: max-content;
+	display: grid;
+	grid-template-rows: 12rem 1fr;
+	margin-top: 5rem;
+
+	&__search-container {
+		padding: 3rem 6rem 3rem 6rem;
+		background-color: var(--color-white-warm);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 2rem;
+		box-shadow: var(--box-shadow-light);
+		z-index: 30;
+		@include respond("tab-port") {
+			padding: 2rem 3rem 2rem 3rem;
+		}
+	}
+	&__search-input-box {
+		display: flex;
+		gap: 2rem;
+		@include respond("phone") {
+			flex-direction: column;
+			gap: 1rem;
+			align-items: center;
+
+			.btn--primary {
+				font-size: 1.2rem;
+				padding: 1rem 1.2rem;
+			}
+		}
+	}
+	&__heading {
+		font-size: 3rem;
+		color: var(--primary-brand-color);
+		@include respond("phone") {
+			font-size: 2.5rem;
+		}
+	}
+	&__search-input {
+		font-size: 1.5rem;
+		width: 30rem;
+		padding: 1rem 1.5rem;
+		border-radius: 20px;
+		border: none;
+		box-shadow: var(--box-shadow-light);
+
+		@include respond("tab-port") {
+			width: 15rem;
+		}
+
+		&:focus {
+			outline: 2px solid var(--primary-brand-color);
+			outline-offset: 5px;
+		}
+		&::placeholder {
+			font-size: 1.2rem;
+			font-style: italic;
+			letter-spacing: 0.5px;
+
+			@include respond("phone") {
+				font-size: 1rem;
+			}
+		}
+	}
+
+	&__list {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(20rem, 25rem));
+		align-items: center;
+		justify-content: center;
+		justify-items: center;
+		padding: 5rem 7rem;
+		row-gap: 4rem;
+		column-gap: 4rem;
+	}
+
+	&__item {
+		background-color: var(--color-white-cool);
+		border-radius: 10px;
+		overflow: hidden;
+		padding: 1rem 1.5rem;
+		box-shadow: var(--box-shadow-light);
+		transition: transform 0.3s;
+
+		&:hover {
+			transform: scale(1.05);
+		}
+
+		.cart__qty-container {
+			gap: 1rem;
+		}
+		.btn--primary-2 {
+			padding: 0rem;
+			width: 3rem;
+			height: 3rem;
+			border-radius: 50%;
+			border: 2px solid var(--secondary-brand-color);
+			color: var(--secondary-brand-color);
+			@include flex-center;
+			box-shadow: none;
+
+			&:hover {
+				background-color: var(--secondary-brand-color);
+				color: var(--color-white-cool);
+			}
+		}
+	}
+	&__item-img {
+		height: 20rem;
+		width: 20rem;
+	}
+	&__item-container {
+		@include flex-center-col;
+		gap: 2rem;
+	}
+	&__item-title-box {
+		font-size: 1.7rem;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+	&__item-details-box {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		padding: 0 1rem;
+	}
+	&__item-price {
+		font-size: 1.8rem;
+	}
+}

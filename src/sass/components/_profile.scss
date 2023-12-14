@@ -1,0 +1,90 @@
+.profile {
+	@include flex-center;
+
+	&-form {
+		padding: 5rem 4rem;
+		border-radius: 20px;
+		flex: 0 0 50%;
+		color: var(--primary-brand-color);
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+
+		@include respond("tab-port") {
+			padding: 3rem 0;
+			width: 100%;
+		}
+
+		svg {
+			position: absolute;
+			bottom: 7px;
+			right: 7px;
+			cursor: pointer;
+
+			path {
+				fill: var(--primary-brand-color);
+			}
+
+			&:hover path {
+				fill: var(--secondary-brand-color);
+			}
+		}
+
+		&__heading {
+			font-size: 4rem;
+
+			span {
+				font-style: italic;
+				font-size: 1.4rem;
+			}
+		}
+
+		&__group {
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 1rem;
+			position: relative;
+
+			gap: 0.5rem;
+		}
+		&__label {
+			font-size: 1.5rem;
+		}
+		&__input {
+			font-size: 1.7rem;
+			padding: 0.5rem;
+			border-radius: 5px;
+			border: none;
+
+			&::placeholder {
+				font-size: 1rem;
+				font-style: italic;
+				opacity: 0.8;
+			}
+
+			&:focus {
+				outline: 2px solid var(--color-white-cool);
+				outline-offset: 3px;
+				transition: all 0.1s;
+			}
+		}
+		&__btns {
+			display: flex;
+			gap: 1rem;
+
+			.nav-link {
+				text-decoration: none;
+				font-family: inherit;
+				font-size: 1.4rem;
+			}
+
+			&--login {
+				width: 10rem;
+			}
+
+			@include respond("tab-port") {
+				flex-direction: column;
+			}
+		}
+	}
+}
