@@ -6,6 +6,7 @@ import CartPage from "./components/cart/CartPage";
 import PageNotFound from "./components/ui/PageNotFound";
 import MainApp from "./components/main-app/MainApp";
 import Profile from "./components/profile/Profile";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
 	return (
@@ -22,6 +23,26 @@ const App = () => {
 				<Route path="/profile" element={<Profile />} />
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
+			<Toaster
+				position="top-center"
+				gutter={8}
+				toastOptions={{
+					// Default options for specific types
+					style: {
+						fontSize: "1.8rem",
+					},
+					success: {
+						duration: 3000,
+						theme: {
+							primary: "green",
+							secondary: "black",
+						},
+					},
+					error: {
+						duration: 5000,
+					},
+				}}
+			/>
 		</BrowserRouter>
 	);
 };

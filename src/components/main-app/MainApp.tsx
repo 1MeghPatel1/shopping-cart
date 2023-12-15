@@ -18,19 +18,13 @@ const MainApp = () => {
 
 	useEffect(() => {
 		const header = document.querySelector(".header") as HTMLHeadElement;
-		const hero = document.querySelector(".hero") as HTMLElement;
 		const products = document.querySelector(".products") as HTMLElement;
 		const searchContainer = document.querySelector(
 			".products__search-container"
 		) as HTMLElement;
-		const headerHeight = header.getBoundingClientRect().height;
-		const heroHeight = hero.getBoundingClientRect().height;
-
-		console.log(headerHeight, heroHeight);
 
 		const stickyNav: IntersectionObserverCallback = function (entries) {
 			const [entry] = entries;
-			console.log(entry);
 
 			if (!entry.isIntersecting) {
 				header.classList.add("sticky");

@@ -66,21 +66,6 @@
 			padding: 3rem 4rem;
 		}
 
-		svg {
-			position: absolute;
-			bottom: 7px;
-			right: 7px;
-			cursor: pointer;
-
-			path {
-				fill: var(--primary-brand-color);
-			}
-
-			&:hover path {
-				fill: var(--secondary-brand-color);
-			}
-		}
-
 		&__heading {
 			font-size: 4rem;
 
@@ -97,11 +82,30 @@
 			position: relative;
 
 			gap: 0.5rem;
+
+			button {
+				position: absolute;
+				top: 35px;
+				right: 7px;
+				cursor: pointer;
+				background-color: transparent;
+				border: none;
+				@include flex-center;
+				path {
+					fill: var(--primary-brand-color);
+				}
+
+				&:hover path {
+					fill: var(--secondary-brand-color);
+				}
+			}
 		}
+
 		&__label {
 			font-size: 1.5rem;
 		}
 		&__input {
+			font-family: inherit;
 			font-size: 1.7rem;
 			padding: 0.5rem;
 			border-radius: 5px;
@@ -119,6 +123,13 @@
 				transition: all 0.1s;
 			}
 		}
+
+		&__error {
+			font-size: 1.2rem;
+			letter-spacing: 0.5px;
+			color: #e34f4f;
+		}
+
 		&__btns {
 			display: flex;
 			gap: 1rem;
