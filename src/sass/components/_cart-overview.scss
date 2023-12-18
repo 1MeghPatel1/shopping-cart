@@ -5,8 +5,8 @@
 	background-color: var(--primary-brand-color);
 	color: var(--color-white-cool);
 	z-index: 30;
-	position: relative;
-	bottom: -10px;
+	left: 0;
+	right: 0;
 
 	&__details {
 		font-family: "Montserrat", sans-serif;

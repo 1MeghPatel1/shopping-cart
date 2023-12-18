@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { formatCurrency } from "../../utils/helper";
 import UpdateItemQuantity from "./../cart/UpdateItemQuantity";
-import { postCart } from "../../services/apiServices";
+import { getCart, postCart } from "../../services/apiServices";
+import { useDispatch } from "react-redux";
+import { assignCart, increaseItemQuantity } from "../../slices/cartSlice";
+import toast from "react-hot-toast";
 
-type PropsType = {
+export type ProductPropsType = {
 	id: number;
 	category: string;
 	image: string;
@@ -12,18 +15,35 @@ type PropsType = {
 	qty: number;
 };
 
-const ProductItem = ({ category, image, name, price, id, qty }: PropsType) => {
+const ProductItem = ({
+	category,
+	image,
+	name,
+	price,
+	id,
+	qty,
+}: ProductPropsType) => {
 	const truncatedName =
 		name.split(" ").length > 3
 			? name.split(" ").slice(0, 4).join(" ") + "..."
 			: name;
 
+	const dispatch = useDispatch();
+
 	const handleAddClick = async () => {
 		try {
+			const toastId = toast.loading("Adding Item to the Cart...");
 			const res = await postCart(id);
-			console.log(res);
+			if (res.success) {
+				const res = await getCart();
+				dispatch(assignCart(res.data));
+				toast.success("Added to the Cart", {
+					id: toastId,
+				});
+			}
 		} catch (err) {
 			console.log(err);
+			toast.error("Something Went Wrong");
 		}
 	};
 

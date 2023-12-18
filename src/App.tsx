@@ -8,7 +8,6 @@ import MainApp from "./components/main-app/MainApp";
 import Profile from "./components/profile/Profile";
 import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "./components/authentication/ProtectedRoute";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import { Provider } from "react-redux";
 import store from "./store";
 

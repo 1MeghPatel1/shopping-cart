@@ -15,7 +15,13 @@ const ProductModal = ({ id, setOpenItem }: propsType) => {
 		return store.products.products.find((product: any) => id === product.id);
 	});
 
-	const qty = product?.Cart?.length > 0 ? product?.Cart[0].quantity : 0;
+	const cart = useSelector((store: any) => {
+		return store.cart.cart;
+	});
+
+	const cartProduct = cart.find((item: any) => item.id === id);
+
+	const qty = cartProduct ? cartProduct.quantity : 0;
 
 	const handleClick = () => {
 		setOpenItem(null);

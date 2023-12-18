@@ -3,6 +3,9 @@ import Hero from "./Hero";
 import ProductSection from "../product/ProductSection";
 import CartOverview from "../product/CartOverview";
 import { useEffect, useState } from "react";
+import { getCart } from "../../services/apiServices";
+import { useDispatch } from "react-redux";
+import { assignCart } from "../../slices/cartSlice";
 
 const MainApp = () => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -10,6 +13,8 @@ const MainApp = () => {
 	function handleResize() {
 		setWindowWidth(window.innerWidth);
 	}
+
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		window.addEventListener("resize", handleResize);
@@ -37,7 +42,7 @@ const MainApp = () => {
 
 		const productsObserver = new IntersectionObserver(stickyNav, {
 			root: null,
-			threshold: windowWidth < 900 ? (windowWidth < 700 ? 0.22 : 0.4) : 0.5,
+			threshold: windowWidth < 900 ? (windowWidth < 700 ? 0.22 : 0.4) : 0.43,
 		});
 
 		productsObserver.observe(products);
@@ -47,19 +52,17 @@ const MainApp = () => {
 		};
 	}, [windowWidth]);
 
-	// useEffect(() => {
-	// 	const fetchProducts = async () => {
-	// 		try {
-	// 			const res = await shopApiJWT.get("products");
-	// 			return res;
-	// 		} catch (err) {
-	// 			console.log(err);
-	// 		}
-	// 	};
-	// 	fetchProducts().then((res) => {
-	// 		console.log(res);
-	// 	});
-	// }, []);
+	useEffect(() => {
+		const fetchProducts = async () => {
+			try {
+				const res = await getCart();
+				dispatch(assignCart(res.data));
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		fetchProducts();
+	}, [dispatch]);
 
 	return (
 		<div>

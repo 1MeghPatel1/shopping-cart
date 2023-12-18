@@ -1,5 +1,8 @@
-import { deleteCartQty, postCart } from "../../services/apiServices";
+import { useDispatch } from "react-redux";
+import { deleteCartQty, getCart, postCart } from "../../services/apiServices";
 import Button from "../ui/Button";
+import { assignCart } from "../../slices/cartSlice";
+import toast from "react-hot-toast";
 
 type propsType = {
 	qty: number;
@@ -7,21 +10,43 @@ type propsType = {
 };
 
 const UpdateItemQuantity = ({ qty, id }: propsType) => {
+	const dispatch = useDispatch();
+
 	const handleAddClick = async () => {
 		try {
+			const toastId = toast.loading("Increasing Item Quantity...");
 			const res = await postCart(id);
-			console.log(res);
+			if (res.success) {
+				const res = await getCart();
+				if (res.success) {
+					dispatch(assignCart(res.data));
+					toast.success("Increased Item Quantity", {
+						id: toastId,
+					});
+				}
+			}
 		} catch (err) {
 			console.log(err);
+			toast.error("Something Went Wrong");
 		}
 	};
 
 	const handleMinusClick = async () => {
 		try {
+			const toastId = toast.loading("Decreasing Item Quantity...");
 			const res = await deleteCartQty(id);
-			console.log(res);
+			if (res.success) {
+				const res = await getCart();
+				if (res.success) {
+					dispatch(assignCart(res.data));
+					toast.success("Decreased Item Quantity", {
+						id: toastId,
+					});
+				}
+			}
 		} catch (err) {
 			console.log(err);
+			toast.error("Something Went Wrong");
 		}
 	};
 

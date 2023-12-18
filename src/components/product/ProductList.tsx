@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import ProductItem from "./ProductItem";
+import ProductItem, { ProductPropsType } from "./ProductItem";
 import ProductModal from "./ProductModal";
+import { useSelector } from "react-redux";
 
 type productType = {
 	category: string;
@@ -16,15 +17,16 @@ type propType = {
 };
 
 const ProductList = ({ currentItems }: propType) => {
-	console.log(currentItems);
 	const [openItem, setOpenItem] = useState<number | null>(null);
+	const cart = useSelector((store: any) => store.cart.cart);
+
+	//useeffect for Moadal window operations
 	useEffect(() => {
 		const handleProductClick = (e: any) => {
 			const productItem = e.target.closest(".products__item") as HTMLElement;
 			if (!productItem) return;
 			if (
-				e.target?.closest(".btn--secondary-2")?.classList?.value ===
-					"btn--secondary-2" ||
+				e.target?.closest("button")?.classList?.value === "btn--primary-2" ||
 				e.target?.classList?.value === "btn--secondary-2"
 			) {
 				return;
@@ -43,17 +45,20 @@ const ProductList = ({ currentItems }: propType) => {
 
 	return (
 		<div className="products__list">
-			{currentItems.map((product) => (
-				<ProductItem
-					key={product.id}
-					category={product.category}
-					image={product.image}
-					name={product.name}
-					price={product.price}
-					qty={product?.Cart?.length > 0 ? product?.Cart[0].quantity : 0}
-					id={product.id}
-				/>
-			))}
+			{currentItems.map((product) => {
+				const cartProduct = cart.find((item: any) => item.id === product.id);
+				return (
+					<ProductItem
+						key={product.id}
+						category={product.category}
+						image={product.image}
+						name={product.name}
+						price={product.price}
+						qty={cartProduct ? cartProduct.quantity : 0}
+						id={product.id}
+					/>
+				);
+			})}
 			<ProductModal id={openItem} setOpenItem={setOpenItem} />
 		</div>
 	);
