@@ -46,10 +46,17 @@
 		@include respond("phone") {
 			gap: 1rem;
 		}
+		button {
+			font-size: 1.8rem;
+			font-family: inherit;
+			background-color: transparent;
+			border: none;
+		}
 	}
 	&__nav-item {
 		position: relative;
 		text-decoration: none;
+		color: var(--color-white-cool);
 		&::after {
 			content: "";
 			height: 0.2rem;

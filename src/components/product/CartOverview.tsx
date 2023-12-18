@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const CartOverview = () => {
 	return (
-		<div className="cart-overview hide sticky-bottom">
+		<div className="cart-overview sticky-bottom">
 			<div className="cart-overview__details">
 				<h3 className="cart-overview__text">
 					Total Products

@@ -47,6 +47,20 @@ const MainApp = () => {
 		};
 	}, [windowWidth]);
 
+	// useEffect(() => {
+	// 	const fetchProducts = async () => {
+	// 		try {
+	// 			const res = await shopApiJWT.get("products");
+	// 			return res;
+	// 		} catch (err) {
+	// 			console.log(err);
+	// 		}
+	// 	};
+	// 	fetchProducts().then((res) => {
+	// 		console.log(res);
+	// 	});
+	// }, []);
+
 	return (
 		<div>
 			<Header />

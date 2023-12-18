@@ -9,6 +9,7 @@ type classObj = {
 };
 type propsType = {
 	children: ReactNode;
+	onClick(): void;
 	type: keyof classObj;
 };
 
@@ -20,8 +21,12 @@ const classObjValue: classObj = {
 	tertiary: "btn--tertiary",
 };
 
-const Button = ({ children, type }: propsType) => {
-	return <button className={classObjValue[type]}>{children}</button>;
+const Button = ({ children, type, onClick = () => {} }: propsType) => {
+	return (
+		<button onClick={onClick} className={classObjValue[type]}>
+			{children}
+		</button>
+	);
 };
 
 export default Button;

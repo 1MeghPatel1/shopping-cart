@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const SignUp = () => {
 	//react hook form
-
+	const [isDisabled, setIsDisabled] = useState(false);
 	const navigate = useNavigate();
 
 	const {
@@ -23,6 +23,8 @@ const SignUp = () => {
 	//Submiting Form
 
 	const onSubmit = (formData: FormValues) => {
+		setIsDisabled(true);
+
 		const data: userSignUp = {
 			firstName: formData.firstName,
 			lastName: formData.lastName,
@@ -31,14 +33,18 @@ const SignUp = () => {
 		};
 
 		type signUpRequestReturnType = Awaited<ReturnType<typeof signUpRequest>>;
-		signUpRequest(data).then((res: signUpRequestReturnType) => {
-			if (!res.success) {
-				toast.error(res.response.data.message);
-				return;
-			}
-			navigate("/auth/login");
-			toast.success(res.message);
-		});
+		signUpRequest(data)
+			.then((res: signUpRequestReturnType) => {
+				if (!res.success) {
+					toast.error(res.message);
+					return;
+				}
+				navigate("/auth/login");
+				toast.success(res.message);
+			})
+			.finally(() => {
+				setIsDisabled(false);
+			});
 	};
 
 	//for password visibility
@@ -170,7 +176,7 @@ const SignUp = () => {
 				<NavLink to="/auth/login" className="nav-link btn--tertiary">
 					Already Registered?
 				</NavLink>
-				<button type="submit" className="btn--secondary">
+				<button disabled={isDisabled} type="submit" className="btn--secondary">
 					Register
 				</button>
 			</div>

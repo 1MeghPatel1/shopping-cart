@@ -99,6 +99,11 @@
 					fill: var(--secondary-brand-color);
 				}
 			}
+
+			.password-visible {
+				fill: rgb(81, 129, 89);
+				filter: drop-shadow(0 3rem 3rem rgb(115, 235, 135));
+			}
 		}
 
 		&__label {
@@ -138,6 +143,10 @@
 				text-decoration: none;
 				font-family: inherit;
 				font-size: 1.4rem;
+
+				&:disabled {
+					cursor: not-allowed;
+				}
 			}
 
 			&--login {

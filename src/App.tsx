@@ -7,43 +7,51 @@ import PageNotFound from "./components/ui/PageNotFound";
 import MainApp from "./components/main-app/MainApp";
 import Profile from "./components/profile/Profile";
 import { Toaster } from "react-hot-toast";
+import ProtectedRoute from "./components/authentication/ProtectedRoute";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const App = () => {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<Navigate replace to="/auth" />} />
-				<Route path="/auth" element={<Auth />}>
-					<Route index element={<Navigate replace to="login" />} />
-					<Route path="login" element={<Login />} />
-					<Route path="signup" element={<SignUp />} />
-				</Route>
-				<Route path="/app" element={<MainApp />} />
-				<Route path="/cart" element={<CartPage />} />
-				<Route path="/profile" element={<Profile />} />
-				<Route path="*" element={<PageNotFound />} />
-			</Routes>
-			<Toaster
-				position="top-center"
-				gutter={8}
-				toastOptions={{
-					// Default options for specific types
-					style: {
-						fontSize: "1.8rem",
-					},
-					success: {
-						duration: 3000,
-						theme: {
-							primary: "green",
-							secondary: "black",
+		<Provider store={store}>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Navigate replace to="/auth" />} />
+					<Route path="/auth" element={<Auth />}>
+						<Route index element={<Navigate replace to="login" />} />
+						<Route path="login" element={<Login />} />
+						<Route path="signup" element={<SignUp />} />
+					</Route>
+					<Route element={<ProtectedRoute />}>
+						<Route path="/app" element={<MainApp />} />
+						<Route path="/cart" element={<CartPage />} />
+						<Route path="/profile" element={<Profile />} />
+					</Route>
+					<Route path="*" element={<PageNotFound />} />
+				</Routes>
+				<Toaster
+					position="top-center"
+					gutter={8}
+					toastOptions={{
+						// Default options for specific types
+						style: {
+							fontSize: "1.8rem",
 						},
-					},
-					error: {
-						duration: 5000,
-					},
-				}}
-			/>
-		</BrowserRouter>
+						success: {
+							duration: 3000,
+							theme: {
+								primary: "green",
+								secondary: "black",
+							},
+						},
+						error: {
+							duration: 5000,
+						},
+					}}
+				/>
+			</BrowserRouter>
+		</Provider>
 	);
 };
 
