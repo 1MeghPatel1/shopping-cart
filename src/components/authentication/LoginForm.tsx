@@ -81,7 +81,10 @@ const LoginForm = () => {
 				</button>
 			</div>
 			<div className="auth-form__btns">
-				<NavLink to="/auth/signup" className="nav-link btn--tertiary">
+				<NavLink
+					to={isDisabled ? "" : "/auth/signup"}
+					className="nav-link btn--tertiary"
+				>
 					New here? Let's get you started
 				</NavLink>
 				<button

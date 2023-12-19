@@ -17,6 +17,9 @@ type propType = {
 };
 
 const ProductList = ({ currentItems }: propType) => {
+	//limiting button or api call if one is already going on
+	const [isDisabled, setIsDisabled] = useState(false);
+
 	const [openItem, setOpenItem] = useState<number | null>(null);
 	const cart = useSelector((store: any) => store.cart.cart);
 
@@ -56,10 +59,17 @@ const ProductList = ({ currentItems }: propType) => {
 						price={product.price}
 						qty={cartProduct ? cartProduct.quantity : 0}
 						id={product.id}
+						isDisabled={isDisabled}
+						setIsDisabled={setIsDisabled}
 					/>
 				);
 			})}
-			<ProductModal id={openItem} setOpenItem={setOpenItem} />
+			<ProductModal
+				isDisabled={isDisabled}
+				setIsDisabled={setIsDisabled}
+				id={openItem}
+				setOpenItem={setOpenItem}
+			/>
 		</div>
 	);
 };

@@ -46,6 +46,7 @@
 		}
 		&-title {
 			font-size: 1.8rem;
+			width: 20rem;
 		}
 		.btn--primary-2 {
 			padding: 0rem;
@@ -78,6 +79,11 @@
 		@include respond("phone") {
 			gap: 2rem;
 		}
+		button {
+			&:disabled {
+				cursor: not-allowed;
+			}
+		}
 	}
 	&__qty-num {
 		font-size: 1.7rem;
@@ -91,5 +97,32 @@
 		.btn--primary {
 			font-size: 2rem;
 		}
+	}
+
+	&__empty-cart-page {
+		width: 100%;
+		height: 70dvh;
+		@include flex-center;
+	}
+	&__empty-cart {
+		@include flex-center-col;
+		padding: 4rem 6rem;
+		background-color: var(--color-white-cool);
+		border-radius: 20px;
+		box-shadow: var(--box-shadow-light);
+		gap: 2rem;
+
+		.nav-link {
+			text-decoration: none;
+			font-size: 1.5rem;
+		}
+	}
+	&__empty-cart-text {
+		font-size: 2.5rem;
+	}
+
+	&__item-price {
+		font-size: 1.7rem;
+		width: 8rem;
 	}
 }

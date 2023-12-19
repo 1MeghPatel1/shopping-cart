@@ -1,18 +1,23 @@
-import { useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { formatCurrency } from "../../utils/helper";
 import UpdateItemQuantity from "./../cart/UpdateItemQuantity";
 import { getCart, postCart } from "../../services/apiServices";
 import { useDispatch } from "react-redux";
-import { assignCart, increaseItemQuantity } from "../../slices/cartSlice";
+import { assignCart } from "../../slices/cartSlice";
 import toast from "react-hot-toast";
 
-export type ProductPropsType = {
+export type ProductType = {
 	id: number;
 	category: string;
 	image: string;
 	name: string;
 	price: number;
 	qty: number;
+};
+
+type ProductPropsType = ProductType & {
+	isDisabled: boolean;
+	setIsDisabled: Dispatch<SetStateAction<boolean>>;
 };
 
 const ProductItem = ({
@@ -22,6 +27,8 @@ const ProductItem = ({
 	price,
 	id,
 	qty,
+	isDisabled,
+	setIsDisabled,
 }: ProductPropsType) => {
 	const truncatedName =
 		name.split(" ").length > 3
@@ -31,6 +38,7 @@ const ProductItem = ({
 	const dispatch = useDispatch();
 
 	const handleAddClick = async () => {
+		setIsDisabled(true);
 		try {
 			const toastId = toast.loading("Adding Item to the Cart...");
 			const res = await postCart(id);
@@ -44,6 +52,8 @@ const ProductItem = ({
 		} catch (err) {
 			console.log(err);
 			toast.error("Something Went Wrong");
+		} finally {
+			setIsDisabled(false);
 		}
 	};
 
@@ -61,9 +71,18 @@ const ProductItem = ({
 					<div className="products__item-details-box">
 						<p className="products__item-price">{formatCurrency(price)}</p>
 						{qty ? (
-							<UpdateItemQuantity id={id} qty={qty} />
+							<UpdateItemQuantity
+								isDisabled={isDisabled}
+								setIsDisabled={setIsDisabled}
+								id={id}
+								qty={qty}
+							/>
 						) : (
-							<button className="btn--secondary-2" onClick={handleAddClick}>
+							<button
+								disabled={isDisabled}
+								className="btn--secondary-2"
+								onClick={handleAddClick}
+							>
 								Add to Cart
 							</button>
 						)}

@@ -1,0 +1,8 @@
+.loading-box {
+	width: 100dvw;
+	@include flex-center;
+	padding: 5rem 7rem;
+}
+.loading-text {
+	font-size: 2.5rem;
+}

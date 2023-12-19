@@ -113,6 +113,9 @@
 				background-color: var(--secondary-brand-color);
 				color: var(--color-white-cool);
 			}
+			&:disabled {
+				cursor: not-allowed;
+			}
 		}
 	}
 	&__item-img {

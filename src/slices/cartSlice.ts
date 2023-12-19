@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ProductPropsType } from "../components/product/ProductItem";
+import { ProductType } from "../components/product/ProductItem";
 
 type initialStateType = {
-	cart: ProductPropsType[];
+	cart: ProductType[];
 	totalProducts: number;
 	totalPrice: number;
 };

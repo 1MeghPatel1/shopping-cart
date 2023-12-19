@@ -3,17 +3,26 @@ import { deleteCartQty, getCart, postCart } from "../../services/apiServices";
 import Button from "../ui/Button";
 import { assignCart } from "../../slices/cartSlice";
 import toast from "react-hot-toast";
+import { Dispatch, SetStateAction } from "react";
 
 type propsType = {
 	qty: number;
 	id: number;
+	isDisabled: boolean;
+	setIsDisabled: Dispatch<SetStateAction<boolean>>;
 };
 
-const UpdateItemQuantity = ({ qty, id }: propsType) => {
+const UpdateItemQuantity = ({
+	qty,
+	id,
+	isDisabled,
+	setIsDisabled,
+}: propsType) => {
 	const dispatch = useDispatch();
 
 	const handleAddClick = async () => {
 		try {
+			setIsDisabled(true);
 			const toastId = toast.loading("Increasing Item Quantity...");
 			const res = await postCart(id);
 			if (res.success) {
@@ -28,10 +37,13 @@ const UpdateItemQuantity = ({ qty, id }: propsType) => {
 		} catch (err) {
 			console.log(err);
 			toast.error("Something Went Wrong");
+		} finally {
+			setIsDisabled(false);
 		}
 	};
 
 	const handleMinusClick = async () => {
+		setIsDisabled(true);
 		try {
 			const toastId = toast.loading("Decreasing Item Quantity...");
 			const res = await deleteCartQty(id);
@@ -47,12 +59,18 @@ const UpdateItemQuantity = ({ qty, id }: propsType) => {
 		} catch (err) {
 			console.log(err);
 			toast.error("Something Went Wrong");
+		} finally {
+			setIsDisabled(false);
 		}
 	};
 
 	return (
 		<div className="cart__qty-container">
-			<Button onClick={handleMinusClick} type="primaryTwo">
+			<Button
+				isDisabled={isDisabled}
+				onClick={handleMinusClick}
+				type="primaryTwo"
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					height="16"
@@ -63,7 +81,11 @@ const UpdateItemQuantity = ({ qty, id }: propsType) => {
 				</svg>
 			</Button>
 			<span className="cart__qty-num">{qty} qty.</span>
-			<Button onClick={handleAddClick} type="primaryTwo">
+			<Button
+				isDisabled={isDisabled}
+				onClick={handleAddClick}
+				type="primaryTwo"
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					height="16"

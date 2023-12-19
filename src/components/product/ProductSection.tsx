@@ -45,7 +45,6 @@ const ProductSection = () => {
 		searchProducts.length > 0 && searchedState
 			? searchProducts.slice(indexOfFirstItem, indexOfLastItem)
 			: products.slice(indexOfFirstItem, indexOfLastItem);
-	console.log(searchedState);
 	const totalPages =
 		searchProducts.length > 0 && searchedState
 			? Math.ceil(searchProducts.length / itemsPerPage)

@@ -1,14 +1,24 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import UpdateItemQuantity from "../cart/UpdateItemQuantity";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { formatCurrency } from "./../../utils/helper";
+import toast from "react-hot-toast";
+import { getCart, postCart } from "../../services/apiServices";
+import { assignCart } from "../../slices/cartSlice";
 
 type propsType = {
 	id: number | null;
 	setOpenItem(id: any): void;
+	isDisabled: boolean;
+	setIsDisabled: Dispatch<SetStateAction<boolean>>;
 };
 
-const ProductModal = ({ id, setOpenItem }: propsType) => {
+const ProductModal = ({
+	id,
+	setOpenItem,
+	isDisabled,
+	setIsDisabled,
+}: propsType) => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const product = useSelector((store: any) => {
@@ -23,9 +33,31 @@ const ProductModal = ({ id, setOpenItem }: propsType) => {
 
 	const qty = cartProduct ? cartProduct.quantity : 0;
 
+	const dispatch = useDispatch();
+
 	const handleClick = () => {
 		setOpenItem(null);
 		setIsVisible(false);
+	};
+
+	const handleAddClick = async () => {
+		setIsDisabled(true);
+		try {
+			const toastId = toast.loading("Adding Item to the Cart...");
+			const res = await postCart(product.id);
+			if (res.success) {
+				const res = await getCart();
+				dispatch(assignCart(res.data));
+				toast.success("Added to the Cart", {
+					id: toastId,
+				});
+			}
+		} catch (err) {
+			console.log(err);
+			toast.error("Something Went Wrong");
+		} finally {
+			setIsDisabled(false);
+		}
 	};
 
 	return (
@@ -58,9 +90,20 @@ const ProductModal = ({ id, setOpenItem }: propsType) => {
 						</p>
 						<div className="products__modal-actions">
 							{qty ? (
-								<UpdateItemQuantity id={product.id} qty={qty} />
+								<UpdateItemQuantity
+									isDisabled={isDisabled}
+									setIsDisabled={setIsDisabled}
+									id={product.id}
+									qty={qty}
+								/>
 							) : (
-								<button className="btn--secondary-2">Add to Cart</button>
+								<button
+									onClick={handleAddClick}
+									disabled={isDisabled}
+									className="btn--secondary-2"
+								>
+									Add to Cart
+								</button>
 							)}
 						</div>
 					</div>

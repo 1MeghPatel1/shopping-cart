@@ -173,7 +173,10 @@ const SignUp = () => {
 			</div>
 
 			<div className="auth-form__btns">
-				<NavLink to="/auth/login" className="nav-link btn--tertiary">
+				<NavLink
+					to={isDisabled ? "" : "/auth/login"}
+					className="nav-link btn--tertiary"
+				>
 					Already Registered?
 				</NavLink>
 				<button disabled={isDisabled} type="submit" className="btn--secondary">

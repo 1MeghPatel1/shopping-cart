@@ -9,8 +9,9 @@ type classObj = {
 };
 type propsType = {
 	children: ReactNode;
-	onClick(): void;
+	onClick?(): void;
 	type: keyof classObj;
+	isDisabled: boolean;
 };
 
 const classObjValue: classObj = {
@@ -21,9 +22,18 @@ const classObjValue: classObj = {
 	tertiary: "btn--tertiary",
 };
 
-const Button = ({ children, type, onClick = () => {} }: propsType) => {
+const Button = ({
+	children,
+	type,
+	onClick = () => {},
+	isDisabled = false,
+}: propsType) => {
 	return (
-		<button onClick={onClick} className={classObjValue[type]}>
+		<button
+			disabled={isDisabled}
+			onClick={onClick}
+			className={classObjValue[type]}
+		>
 			{children}
 		</button>
 	);

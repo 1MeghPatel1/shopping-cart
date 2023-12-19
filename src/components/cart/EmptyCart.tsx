@@ -2,12 +2,16 @@ import { Link } from "react-router-dom";
 
 function EmptyCart() {
 	return (
-		<div className="px-4 py-3">
-			<Link to="/menu">&larr; Back to menu</Link>
+		<div className="cart__empty-cart-page">
+			<div className="cart__empty-cart">
+				<Link className="nav-link btn--primary" to="/app">
+					&larr; Back to Home
+				</Link>
 
-			<p className="mt-7 font-semibold">
-				Your cart is still empty. Start adding some pizzas :)
-			</p>
+				<p className="cart__empty-cart-text">
+					Your cart is still empty. Start adding some Products :)
+				</p>
+			</div>
 		</div>
 	);
 }
