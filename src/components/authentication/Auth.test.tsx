@@ -259,3 +259,9 @@ describe("Sign Up Tests", () => {
 		});
 	});
 });
+
+describe("password visibility test for login and sign up pages", () => {
+	test("password visibility test for Login page", async () => {
+		const { container } = render(<LoginFormTestComponent />);
+	});
+});

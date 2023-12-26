@@ -42,7 +42,7 @@ const Header = () => {
 							Cart
 						</span>
 					</NavLink>
-					<NavLink to="/profile" className="header__nav-item">
+					<NavLink to="/" className="header__nav-item">
 						<span className="header__nav-link">Your Profile</span>
 					</NavLink>
 					<button onClick={handleLogOut} className="header__nav-item">
