@@ -1,12 +1,12 @@
 import { MemoryRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import MainApp from "../main-app/MainApp";
-import Cart from "../cart/CartPage";
-import { act, render, screen } from "../../test-utils";
-import ProtectedRoute from "./ProtectedRoute";
-import Auth from "./Auth";
-import LoginForm from "./LoginForm";
-import SignUp from "./SignUpForm";
+import MainApp from "../components/main-app/MainApp";
+import Cart from "../components/cart/CartPage";
+import { act, render, screen } from "../test-utils";
+import ProtectedRoute from "../components/authentication/ProtectedRoute";
+import Auth from "../components/authentication/Auth";
+import LoginForm from "../components/authentication/LoginForm";
+import SignUp from "../components/authentication/SignUpForm";
 // import { mockLocalStorage } from "../../mocks/mockLocalStorage";
 
 // const { getItemMock } = mockLocalStorage();

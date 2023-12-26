@@ -1,15 +1,15 @@
 import { MemoryRouter, Navigate, Route, Routes } from "react-router-dom";
-import { act, render, screen } from "../../test-utils";
-import Header from "./Header";
+import { act, render, screen } from "../test-utils";
+import Header from "../components/ui/Header";
 import userEvent from "@testing-library/user-event";
-import Auth from "../authentication/Auth";
-import LoginForm from "../authentication/LoginForm";
-import SignUp from "../authentication/SignUpForm";
-import ProtectedRoute from "../authentication/ProtectedRoute";
-import MainApp from "../main-app/MainApp";
-import Cart from "../cart/CartPage";
-import Profile from "../profile/Profile";
-import PageNotFound from "./PageNotFound";
+import Auth from "../components/authentication/Auth";
+import LoginForm from "../components/authentication/LoginForm";
+import SignUp from "../components/authentication/SignUpForm";
+import ProtectedRoute from "../components/authentication/ProtectedRoute";
+import MainApp from "../components/main-app/MainApp";
+import Cart from "../components/cart/CartPage";
+import Profile from "../components/profile/Profile";
+import PageNotFound from "../components/ui/PageNotFound";
 // import { mockLocalStorage } from "../../mocks/mockLocalStorage";
 
 // const { getItemMock } = mockLocalStorage();

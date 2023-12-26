@@ -1,13 +1,9 @@
 import userEvent from "@testing-library/user-event";
-import { act, render, screen } from "../../test-utils";
-import ProductSection from "./ProductSection";
-import * as apiServices from "../../services/apiServices";
-import ProductItem from "./ProductItem";
-import { commonMockResponse } from "../../mocks/handlers";
-import MainApp from "../main-app/MainApp";
-import { MemoryRouter } from "react-router-dom";
-import store from "../../store";
-import { assignCart } from "../../slices/cartSlice";
+import { act, render, screen } from "../test-utils";
+import ProductSection from "../components/product/ProductSection";
+import * as apiServices from "../services/apiServices";
+import ProductItem from "../components/product/ProductItem";
+import { commonMockResponse } from "../mocks/handlers";
 
 const { product, productId, quantity } = commonMockResponse.data;
 
@@ -166,102 +162,5 @@ describe("Tests for Individual Product Item", () => {
 			const qtyElement = screen.queryByText(/[1-9] qty\./i);
 			expect(qtyElement).not.toBeInTheDocument();
 		});
-	});
-
-	test("displaying cart overview whenever there is a product in cart", async () => {
-		await act(
-			async () =>
-				await render(
-					<MemoryRouter>
-						<MainApp />
-					</MemoryRouter>
-				)
-		);
-
-		const cartTotalProductElement = await screen.findByRole("heading", {
-			name: /total products in the cart : 1/i,
-		});
-		const cartViewCartButton = await screen.findByRole("link", {
-			name: /view cart/i,
-		});
-
-		expect(cartTotalProductElement).toBeInTheDocument();
-		expect(cartViewCartButton).toBeInTheDocument();
-	});
-
-	test("Hiding CartOverview component when cart is empty", async () => {
-		await act(
-			async () =>
-				await render(
-					<MemoryRouter>
-						<MainApp />
-					</MemoryRouter>
-				)
-		);
-		await act(async () => {
-			await store.dispatch(assignCart([]));
-		});
-		const cartTotalProductElement = screen.queryByRole("heading", {
-			name: /total products in the cart : 1/i,
-		});
-		expect(cartTotalProductElement).not.toBeInTheDocument();
-	});
-});
-
-describe("testing Product Modal", () => {
-	test("opening product modal when a product is clicked and closing when close btn is clicked", async () => {
-		let productsContainer;
-		await act(async () => {
-			const { container } = await render(<ProductSection />);
-			productsContainer = container;
-		});
-
-		const product = productsContainer!.querySelector(
-			".products__item:nth-child(1)"
-		);
-
-		await userEvent.click(product);
-
-		const modalHeading = screen.queryByRole("heading", {
-			name: /fjallraven \- foldsack no\. 1 backpack, fits 15 laptops/i,
-		});
-		expect(modalHeading).toBeInTheDocument();
-
-		//Now closing modal
-
-		const closeButton = screen.getByRole("button", { name: /❌/i });
-		await userEvent.click(closeButton);
-
-		expect(modalHeading).not.toBeInTheDocument();
-	});
-
-	test("test all the elements of product modal", async () => {
-		let productsContainer;
-		await act(async () => {
-			const { container } = await render(<ProductSection />);
-			productsContainer = container;
-		});
-
-		const product = productsContainer!.querySelector(
-			".products__item:nth-child(1)"
-		);
-
-		await userEvent.click(product);
-
-		const modalHeading = screen.queryByRole("heading", {
-			name: /fjallraven \- foldsack no\. 1 backpack, fits 15 laptops/i,
-		});
-		const modalDescription = screen.getByText(
-			/your perfect pack for everyday use and walks in the forest\. stash your laptop \(up to 15 inches\) in the padded sleeve, your everyday/i
-		);
-		const modalImg = screen.getByRole("img", { name: /product photo/i });
-		const modalCategory = screen.getByRole("heading", {
-			name: /men's clothing/i,
-		});
-
-		expect(modalHeading).toBeInTheDocument();
-		expect(modalDescription).toBeInTheDocument();
-		expect(modalImg).toBeInTheDocument();
-		expect(modalCategory).toBeInTheDocument();
 	});
 });
