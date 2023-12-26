@@ -32,7 +32,6 @@ const CartItem = ({
 		setIsDisabled(true);
 		try {
 			const res = await deleteCartProduct(id);
-			console.log(res);
 			if (res.success) {
 				const res = await getCart();
 				if (res.success) {

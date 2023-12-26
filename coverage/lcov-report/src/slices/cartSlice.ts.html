@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -145,38 +145,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -207,7 +201,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createSlice } from "@reduxjs/toolkit";
 import { ProductType } from "../components/product/ProductItem";
@@ -218,19 +218,19 @@ type initialStateType = {
 	totalPrice: number;
 };
 &nbsp;
-const initialState: initialStateType = <span class="cstat-no" title="statement not covered" >{</span>
+const initialState: initialStateType = {
 	cart: [],
 	totalProducts: 0,
 	totalPrice: 0,
 };
 &nbsp;
-const cartSlice = <span class="cstat-no" title="statement not covered" >createSlice({</span>
+const cartSlice = createSlice({
 	name: "cart",
 	initialState,
 	reducers: {
-<span class="fstat-no" title="function not covered" >		as</span>signCart(state, action) {
-<span class="cstat-no" title="statement not covered" >			state.cart = action.payload.map(<span class="fstat-no" title="function not covered" >(c</span>artItem: any) =&gt; {</span>
-				const localCartItem = <span class="cstat-no" title="statement not covered" >{</span>
+		assignCart(state, action) {
+			state.cart = action.payload.map((cartItem: any) =&gt; {
+				const localCartItem = {
 					id: cartItem.product.id,
 					image: cartItem.product.image,
 					name: cartItem.product.name,
@@ -238,12 +238,12 @@ const cartSlice = <span class="cstat-no" title="statement not covered" >createSl
 					quantity: cartItem.quantity,
 					totalPrice: cartItem.product.price * cartItem.quantity,
 				};
-<span class="cstat-no" title="statement not covered" >				return localCartItem;</span>
+				return localCartItem;
 			});
-<span class="cstat-no" title="statement not covered" >			state.totalPrice = state.cart.reduce(<span class="fstat-no" title="function not covered" >(a</span>cc, curr) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >				return (acc = acc + curr.totalPrice);</span>
+			state.totalPrice = state.cart.reduce((acc, curr) =&gt; {
+				return (acc = acc + curr.totalPrice);
 			}, 0);
-<span class="cstat-no" title="statement not covered" >			state.totalProducts = state.cart.length;</span>
+			state.totalProducts = state.cart.length;
 		},
 &nbsp;
 		// addItem(state, action) {
@@ -280,7 +280,7 @@ export const {
 	// clearCart,
 	// deleteItem,
 	assignCart,
-} = <span class="cstat-no" title="statement not covered" >cartSlice.actions;</span>
+} = cartSlice.actions;
 export default cartSlice.reducer;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -289,7 +289,7 @@ export default cartSlice.reducer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-22T05:27:36.870Z
+                at 2023-12-26T10:46:47.938Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

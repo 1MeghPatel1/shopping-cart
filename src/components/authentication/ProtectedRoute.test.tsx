@@ -7,19 +7,19 @@ import ProtectedRoute from "./ProtectedRoute";
 import Auth from "./Auth";
 import LoginForm from "./LoginForm";
 import SignUp from "./SignUpForm";
-import { mockLocalStorage } from "../../mocks/mockLocalStorage";
+// import { mockLocalStorage } from "../../mocks/mockLocalStorage";
 
-const { getItemMock } = mockLocalStorage();
-const userInfo = {
-	id: 1,
-	firstName: "Megh",
-	lastName: "Patel",
-	email: "megh@gmail.com",
-	refreshToken:
-		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozMywiZmlyc3ROYW1lIjoiTWVnaCIsImxhc3ROYW1lIjoiUGF0ZWwiLCJlbWFpbCI6Im1lZ2hwYXRlbEBnbWFpbC5jb20ifSwiaWF0IjoxNzAzMjUzMjk0LCJle",
-	accessToken:
-		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7I…wOTR9.CkWyQL2gHJfBiKqye8fOnWLREEmhGz2e9OQzVzgDsp4",
-};
+// const { getItemMock } = mockLocalStorage();
+// const userInfo = {
+// 	id: 1,
+// 	firstName: "Megh",
+// 	lastName: "Patel",
+// 	email: "megh@gmail.com",
+// 	refreshToken:
+// 		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozMywiZmlyc3ROYW1lIjoiTWVnaCIsImxhc3ROYW1lIjoiUGF0ZWwiLCJlbWFpbCI6Im1lZ2hwYXRlbEBnbWFpbC5jb20ifSwiaWF0IjoxNzAzMjUzMjk0LCJle",
+// 	accessToken:
+// 		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7I…wOTR9.CkWyQL2gHJfBiKqye8fOnWLREEmhGz2e9OQzVzgDsp4",
+// };
 
 const ProtectedRouteTestComponent = ({
 	initialEntry,
@@ -48,7 +48,7 @@ const ProtectedRouteTestComponent = ({
 
 describe("Protected Route Tests for App", () => {
 	test("Testing if User is Authenticated or Not for Main App Page", async () => {
-		getItemMock.mockReturnValue(JSON.stringify(userInfo));
+		// getItemMock.mockReturnValue(JSON.stringify(userInfo));
 		await act(async () => {
 			await render(<ProtectedRouteTestComponent initialEntry="/app" />);
 		});
@@ -60,7 +60,7 @@ describe("Protected Route Tests for App", () => {
 	});
 
 	test("testing if cart page is rendered or not when user is Authenticated", async () => {
-		getItemMock.mockReturnValue(JSON.stringify(userInfo));
+		// getItemMock.mockReturnValue(JSON.stringify(userInfo));
 		await act(async () => {
 			await render(<ProtectedRouteTestComponent initialEntry="/cart" />);
 		});

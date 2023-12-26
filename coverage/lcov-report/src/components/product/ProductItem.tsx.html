@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>14/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>14/16</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -181,7 +181,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -192,33 +192,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">286x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">286x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">286x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">286x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -277,7 +277,7 @@ type ProductPropsType = ProductType &amp; {
 	setIsDisabled: Dispatch&lt;SetStateAction&lt;boolean&gt;&gt;;
 };
 &nbsp;
-const ProductItem = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span></span>
+const ProductItem = ({
 	category,
 	image,
 	name,
@@ -288,21 +288,21 @@ const ProductItem = <span class="cstat-no" title="statement not covered" ><span 
 	setIsDisabled,
 }: ProductPropsType) =&gt; {
 	const truncatedName =
-<span class="cstat-no" title="statement not covered" >		name.split(" ").length &gt; 3</span>
+		name.split(" ").length &gt; 3
 			? name.split(" ").slice(0, 4).join(" ") + "..."
-			: name;
+			: <span class="branch-1 cbranch-no" title="branch not covered" >name;</span>
 &nbsp;
-	const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch();</span>
+	const dispatch = useDispatch();
 &nbsp;
-	const handleAddClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >		setIsDisabled(true);</span>
-<span class="cstat-no" title="statement not covered" >		try {</span>
-			const toastId = <span class="cstat-no" title="statement not covered" >toast.loading("Adding Item to the Cart...");</span>
-			const res = <span class="cstat-no" title="statement not covered" >await postCart(id);</span>
-<span class="cstat-no" title="statement not covered" >			if (res.success) {</span>
-				const res = <span class="cstat-no" title="statement not covered" >await getCart();</span>
-<span class="cstat-no" title="statement not covered" >				dispatch(assignCart(res.data));</span>
-<span class="cstat-no" title="statement not covered" >				toast.success("Added to the Cart", {</span>
+	const handleAddClick = async () =&gt; {
+		setIsDisabled(true);
+		try {
+			const toastId = toast.loading("Adding Item to the Cart...");
+			const res = await postCart(id);
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (res.success) {
+				const res = await getCart();
+				dispatch(assignCart(res.data));
+				toast.success("Added to the Cart", {
 					id: toastId,
 				});
 			}
@@ -310,11 +310,11 @@ const ProductItem = <span class="cstat-no" title="statement not covered" ><span 
 <span class="cstat-no" title="statement not covered" >			console.log(err);</span>
 <span class="cstat-no" title="statement not covered" >			toast.error("Something Went Wrong");</span>
 		} finally {
-<span class="cstat-no" title="statement not covered" >			setIsDisabled(false);</span>
+			setIsDisabled(false);
 		}
 	};
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	return (</span>
+	return (
 		&lt;&gt;
 			&lt;article className="products__item" data-product-id={id}&gt;
 				&lt;img src={image} alt="" className="products__item-img" /&gt;
@@ -358,7 +358,7 @@ export default ProductItem;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-22T05:27:36.870Z
+                at 2023-12-26T10:46:47.938Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

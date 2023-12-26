@@ -81,7 +81,6 @@ export const deleteCartProduct = async (productId: number) => {
 		const res = await shopApiJWT.delete("cart/product", {
 			data: { productId },
 		});
-		console.log(res.data);
 		return res.data;
 	} catch (err) {
 		console.log(err);

@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">35.71% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/28</span>
+                <span class='fraction'>9/27</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.36% </span>
+                <span class="strong">59.09% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/22</span>
+                <span class='fraction'>13/22</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.46% </span>
+                <span class="strong">36% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/26</span>
+                <span class='fraction'>9/25</span>
             </div>
         
             
@@ -253,8 +253,7 @@
 <a name='L188'></a><a href='#L188'>188</a>
 <a name='L189'></a><a href='#L189'>189</a>
 <a name='L190'></a><a href='#L190'>190</a>
-<a name='L191'></a><a href='#L191'>191</a>
-<a name='L192'></a><a href='#L192'>192</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L191'></a><a href='#L191'>191</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -262,24 +261,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -306,11 +304,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -325,7 +323,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -466,7 +464,6 @@ const SignUp = () =&gt; {
 		resolver: zodResolver(schema),
 		mode: "onSubmit",
 	});
-	console.log(errors);
 &nbsp;
 	//Submiting Form
 &nbsp;
@@ -533,7 +530,7 @@ const SignUp = () =&gt; {
 					{...register("firstName")}
 				/&gt;
 				&lt;span className="auth-form__error"&gt;
-					{errors.firstName &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >`${errors.firstName.message}`}</span>
+					{errors.firstName &amp;&amp; `${errors.firstName.message}`}
 				&lt;/span&gt;
 			&lt;/div&gt;
 			&lt;div className="auth-form__group"&gt;
@@ -548,7 +545,7 @@ const SignUp = () =&gt; {
 					{...register("lastName")}
 				/&gt;
 				&lt;span className="auth-form__error"&gt;
-					{errors.lastName &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >`${errors.lastName.message}`}</span>
+					{errors.lastName &amp;&amp; `${errors.lastName.message}`}
 				&lt;/span&gt;
 			&lt;/div&gt;
 			&lt;div className="auth-form__group"&gt;
@@ -563,7 +560,7 @@ const SignUp = () =&gt; {
 					{...register("email")}
 				/&gt;
 				&lt;span className="auth-form__error"&gt;
-					{errors.email &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >`${errors.email.message}`}</span>
+					{errors.email &amp;&amp; `${errors.email.message}`}
 				&lt;/span&gt;
 			&lt;/div&gt;
 			&lt;div className="auth-form__group auth-form__password"&gt;
@@ -589,7 +586,7 @@ const SignUp = () =&gt; {
 					&lt;/svg&gt;
 				&lt;/button&gt;
 				&lt;span className="auth-form__error"&gt;
-					{errors.password &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >`${errors.password.message}`}</span>
+					{errors.password &amp;&amp; `${errors.password.message}`}
 				&lt;/span&gt;
 			&lt;/div&gt;
 &nbsp;
@@ -616,7 +613,7 @@ const SignUp = () =&gt; {
 					&lt;/svg&gt;
 				&lt;/button&gt;
 				&lt;span className="auth-form__error"&gt;
-					{errors.confirmPassword &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >`${errors.confirmPassword.message}`}</span>
+					{errors.confirmPassword &amp;&amp; `${errors.confirmPassword.message}`}
 				&lt;/span&gt;
 			&lt;/div&gt;
 &nbsp;
@@ -643,7 +640,7 @@ export default SignUp;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-22T05:27:47.853Z
+                at 2023-12-26T10:46:47.938Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

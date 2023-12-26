@@ -25,7 +25,7 @@ const UpdateItemQuantity = ({
 			setIsDisabled(true);
 			const toastId = toast.loading("Increasing Item Quantity...");
 			const res = await postCart(id);
-			if (res.success) {
+			if (res?.success) {
 				const res = await getCart();
 				if (res.success) {
 					dispatch(assignCart(res.data));

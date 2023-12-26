@@ -26,9 +26,7 @@ const Header = () => {
 			<nav className="header__nav">
 				<ul className="header__nav-list">
 					<NavLink to="/app" className="header__nav-item">
-						<span href="" className="header__nav-link">
-							Home
-						</span>
+						<span className="header__nav-link">Home</span>
 					</NavLink>
 
 					<NavLink to="/cart" className="header__nav-item">

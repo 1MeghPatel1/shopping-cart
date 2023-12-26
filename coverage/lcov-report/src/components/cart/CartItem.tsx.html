@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>14/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>14/16</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -150,8 +150,7 @@
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,7 +168,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -178,19 +177,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -201,11 +199,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -257,7 +255,7 @@ type cartItemType = {
 	setIsDisabled: any;
 };
 &nbsp;
-const CartItem = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span></span>
+const CartItem = ({
 	title,
 	image,
 	quantity,
@@ -266,19 +264,18 @@ const CartItem = <span class="cstat-no" title="statement not covered" ><span cla
 	isDisabled,
 	setIsDisabled,
 }: cartItemType) =&gt; {
-	const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch();</span>
+	const dispatch = useDispatch();
 &nbsp;
-	const handleDeleteClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
-		const toastId = <span class="cstat-no" title="statement not covered" >toast.loading("Deleting Product from Cart...");</span>
-<span class="cstat-no" title="statement not covered" >		setIsDisabled(true);</span>
-<span class="cstat-no" title="statement not covered" >		try {</span>
-			const res = <span class="cstat-no" title="statement not covered" >await deleteCartProduct(id);</span>
-<span class="cstat-no" title="statement not covered" >			console.log(res);</span>
-<span class="cstat-no" title="statement not covered" >			if (res.success) {</span>
-				const res = <span class="cstat-no" title="statement not covered" >await getCart();</span>
-<span class="cstat-no" title="statement not covered" >				if (res.success) {</span>
-<span class="cstat-no" title="statement not covered" >					dispatch(assignCart(res.data));</span>
-<span class="cstat-no" title="statement not covered" >					toast.success("Product Deleted from Cart", {</span>
+	const handleDeleteClick = async () =&gt; {
+		const toastId = toast.loading("Deleting Product from Cart...");
+		setIsDisabled(true);
+		try {
+			const res = await deleteCartProduct(id);
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (res.success) {
+				const res = await getCart();
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (res.success) {
+					dispatch(assignCart(res.data));
+					toast.success("Product Deleted from Cart", {
 						id: toastId,
 					});
 				}
@@ -289,11 +286,11 @@ const CartItem = <span class="cstat-no" title="statement not covered" ><span cla
 				id: toastId,
 			});
 		} finally {
-<span class="cstat-no" title="statement not covered" >			setIsDisabled(false);</span>
+			setIsDisabled(false);
 		}
 	};
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	return (</span>
+	return (
 		&lt;li className="cart__item"&gt;
 			&lt;div className="cart__item-img-title-box"&gt;
 				&lt;img src={image} alt="cart item" className="cart__item-img" /&gt;
@@ -334,7 +331,7 @@ export default CartItem;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-22T05:27:36.870Z
+                at 2023-12-26T10:46:47.938Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

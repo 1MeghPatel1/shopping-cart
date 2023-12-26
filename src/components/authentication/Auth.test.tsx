@@ -5,9 +5,9 @@ import { MemoryRouter, Navigate, Route, Routes } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import SignUp from "./SignUpForm";
 import * as apiServices from "../../services/apiServices";
-import { mockLocalStorage } from "../../mocks/mockLocalStorage";
+// import { mockLocalStorage } from "../../mocks/mockLocalStorage";
 
-const { setItemMock } = mockLocalStorage();
+// const { setItemMock } = mockLocalStorage();
 const loginMock = jest.spyOn(apiServices, "logInRequest");
 const SignUpMock = jest.spyOn(apiServices, "signUpRequest");
 
@@ -112,7 +112,7 @@ describe("login-tests", () => {
 			expect(loginMock).toHaveBeenCalled();
 		});
 
-		expect(setItemMock).toHaveBeenCalledWith(
+		expect(localStorage.setItem).toHaveBeenCalledWith(
 			"userInfo",
 			JSON.stringify({
 				id: 1,
@@ -180,6 +180,26 @@ describe("Sign Up Tests", () => {
 		expect(inputElements).toHaveLength(3);
 		expect(confirmPassElement).toBeInTheDocument();
 		expect(PassElement).toBeInTheDocument();
+	});
+
+	test("Submiting form when inputs are empty shows errors", async () => {
+		render(<SignUpTestComponent />);
+
+		const submitBtn = screen.getByRole("button", { name: /register/i });
+		await userEvent.click(submitBtn);
+
+		const emailErr = screen.getByText(/please enter valid email address/i);
+		expect(emailErr).toBeInTheDocument();
+
+		const lastNameErr = screen.getByText(
+			/last name should be more than 3 letters/i
+		);
+		expect(lastNameErr).toBeInTheDocument();
+
+		const firstNameErr = screen.getByText(
+			/first name should be more than 3 letters/i
+		);
+		expect(firstNameErr).toBeInTheDocument();
 	});
 
 	test("when user enter details into form", async () => {

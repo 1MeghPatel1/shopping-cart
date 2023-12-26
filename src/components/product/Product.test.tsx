@@ -6,6 +6,8 @@ import ProductItem from "./ProductItem";
 import { commonMockResponse } from "../../mocks/handlers";
 import MainApp from "../main-app/MainApp";
 import { MemoryRouter } from "react-router-dom";
+import store from "../../store";
+import { assignCart } from "../../slices/cartSlice";
 
 const { product, productId, quantity } = commonMockResponse.data;
 
@@ -167,4 +169,47 @@ describe("Tests for Individual Product Item", () => {
 			expect(qtyElement).not.toBeInTheDocument();
 		});
 	});
+
+	test("displaying cart overview whenever there is a product in cart", async () => {
+		await act(
+			async () =>
+				await render(
+					<MemoryRouter>
+						<MainApp />
+					</MemoryRouter>
+				)
+		);
+
+		const cartTotalProductElement = await screen.findByRole("heading", {
+			name: /total products in the cart : 1/i,
+		});
+		const cartViewCartButton = await screen.findByRole("link", {
+			name: /view cart/i,
+		});
+
+		expect(cartTotalProductElement).toBeInTheDocument();
+		expect(cartViewCartButton).toBeInTheDocument();
+	});
+
+	test("Hiding CartOverview component when cart is empty", async () => {
+		await act(
+			async () =>
+				await render(
+					<MemoryRouter>
+						<MainApp />
+					</MemoryRouter>
+				)
+		);
+		await act(async () => {
+			await store.dispatch(assignCart([]));
+		});
+		const cartTotalProductElement = screen.queryByRole("heading", {
+			name: /total products in the cart : 1/i,
+		});
+		expect(cartTotalProductElement).not.toBeInTheDocument();
+	});
+});
+
+describe("testing Product Modal", () => {
+	test("opening product modal when a product is clicked", async () => {});
 });
