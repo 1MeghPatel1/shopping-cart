@@ -23,7 +23,6 @@ const LoginForm = () => {
 		setIsDisabled(true);
 		logInRequest(data)
 			.then((res): void => {
-				console.log(res);
 				if (!res.success) {
 					toast.error(res.message);
 					return;

@@ -11,7 +11,10 @@ export type FormValues = {
 export const schema: ZodType<FormValues> = z
 	.object({
 		firstName: z
-			.string()
+			.string({
+				invalid_type_error: "Invalid Name",
+				required_error: "Name is Required",
+			})
 			.trim()
 			.min(3, { message: "First Name should be more than 3 letters" })
 			.max(30, { message: "First Name should be less than 20 letters" }),

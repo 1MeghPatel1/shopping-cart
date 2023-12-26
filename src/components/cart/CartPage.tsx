@@ -48,7 +48,6 @@ function Cart() {
 
 							<ul className="cart__list">
 								{cartState.cart.map((cartItem: any) => {
-									console.log();
 									return (
 										<CartItem
 											image={cartItem.image}

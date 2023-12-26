@@ -1,0 +1,210 @@
+<?xml version="1.0" ?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage lines-valid="57" lines-covered="23" line-rate="0.4035" branches-valid="30" branches-covered="11" branch-rate="0.3666" timestamp="1703222867849" complexity="0" version="0.1">
+  <sources>
+    <source>D:\Albiorix\shopping-cart</source>
+  </sources>
+  <packages>
+    <package name="src" line-rate="0" branch-rate="1">
+      <classes>
+        <class name="test-utils.tsx" filename="src\test-utils.tsx" line-rate="0" branch-rate="1">
+          <methods>
+            <method name="(anonymous_0)" hits="0" signature="()V">
+              <lines>
+                <line number="6" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_1)" hits="0" signature="()V">
+              <lines>
+                <line number="10" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="6" hits="0" branch="false"/>
+            <line number="7" hits="0" branch="false"/>
+            <line number="10" hits="0" branch="false"/>
+            <line number="13" hits="0" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="src.components.authentication" line-rate="0.42" branch-rate="0.3666">
+      <classes>
+        <class name="Auth.tsx" filename="src\components\authentication\Auth.tsx" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="(anonymous_0)" hits="6" signature="()V">
+              <lines>
+                <line number="3" hits="6"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="6" branch="false"/>
+          </lines>
+        </class>
+        <class name="LoginForm.tsx" filename="src\components\authentication\LoginForm.tsx" line-rate="0.4" branch-rate="0.375">
+          <methods>
+            <method name="(anonymous_0)" hits="1" signature="()V">
+              <lines>
+                <line number="7" hits="1"/>
+              </lines>
+            </method>
+            <method name="(anonymous_1)" hits="0" signature="()V">
+              <lines>
+                <line number="13" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_2)" hits="0" signature="()V">
+              <lines>
+                <line number="15" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_3)" hits="0" signature="()V">
+              <lines>
+                <line number="22" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_4)" hits="0" signature="()V">
+              <lines>
+                <line number="25" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_5)" hits="0" signature="()V">
+              <lines>
+                <line number="35" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+            <line number="9" hits="1" branch="false"/>
+            <line number="11" hits="1" branch="false"/>
+            <line number="13" hits="1" branch="false"/>
+            <line number="14" hits="0" branch="false"/>
+            <line number="15" hits="0" branch="false"/>
+            <line number="20" hits="1" branch="false"/>
+            <line number="22" hits="1" branch="false"/>
+            <line number="23" hits="0" branch="false"/>
+            <line number="24" hits="0" branch="false"/>
+            <line number="26" hits="0" branch="false"/>
+            <line number="27" hits="0" branch="true" condition-coverage="0% (0/2)"/>
+            <line number="28" hits="0" branch="false"/>
+            <line number="29" hits="0" branch="false"/>
+            <line number="31" hits="0" branch="false"/>
+            <line number="32" hits="0" branch="false"/>
+            <line number="33" hits="0" branch="false"/>
+            <line number="36" hits="0" branch="false"/>
+            <line number="40" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="SignUpForm.tsx" filename="src\components\authentication\SignUpForm.tsx" line-rate="0.3846" branch-rate="0.3636">
+          <methods>
+            <method name="(anonymous_0)" hits="1" signature="()V">
+              <lines>
+                <line number="9" hits="1"/>
+              </lines>
+            </method>
+            <method name="(anonymous_1)" hits="0" signature="()V">
+              <lines>
+                <line number="26" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_2)" hits="0" signature="()V">
+              <lines>
+                <line number="38" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_3)" hits="0" signature="()V">
+              <lines>
+                <line number="46" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_4)" hits="0" signature="()V">
+              <lines>
+                <line number="57" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_5)" hits="0" signature="()V">
+              <lines>
+                <line number="66" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_6)" hits="0" signature="()V">
+              <lines>
+                <line number="68" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="9" hits="1" branch="false"/>
+            <line number="11" hits="1" branch="false"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="18" hits="1" branch="false"/>
+            <line number="22" hits="1" branch="false"/>
+            <line number="26" hits="1" branch="false"/>
+            <line number="27" hits="0" branch="false"/>
+            <line number="29" hits="0" branch="false"/>
+            <line number="37" hits="0" branch="false"/>
+            <line number="39" hits="0" branch="true" condition-coverage="0% (0/2)"/>
+            <line number="40" hits="0" branch="false"/>
+            <line number="41" hits="0" branch="false"/>
+            <line number="43" hits="0" branch="false"/>
+            <line number="44" hits="0" branch="false"/>
+            <line number="47" hits="0" branch="false"/>
+            <line number="53" hits="1" branch="false"/>
+            <line number="55" hits="1" branch="false"/>
+            <line number="57" hits="1" branch="false"/>
+            <line number="58" hits="0" branch="false"/>
+            <line number="60" hits="0" branch="false"/>
+            <line number="63" hits="0" branch="false"/>
+            <line number="65" hits="0" branch="true" condition-coverage="0% (0/2)"/>
+            <line number="66" hits="0" branch="false"/>
+            <line number="67" hits="0" branch="true" condition-coverage="0% (0/2)"/>
+            <line number="68" hits="0" branch="false"/>
+            <line number="72" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="formSchema.tsx" filename="src\components\authentication\formSchema.tsx" line-rate="0.5" branch-rate="1">
+          <methods>
+            <method name="(anonymous_0)" hits="0" signature="()V">
+              <lines>
+                <line number="54" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="1" branch="false"/>
+            <line number="54" hits="0" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="src.mocks" line-rate="0.6666" branch-rate="1">
+      <classes>
+        <class name="handlers.ts" filename="src\mocks\handlers.ts" line-rate="0.5" branch-rate="1">
+          <methods>
+            <method name="(anonymous_0)" hits="0" signature="()V">
+              <lines>
+                <line number="8" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="1" branch="false"/>
+            <line number="9" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="server.ts" filename="src\mocks\server.ts" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+            <line number="4" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>
