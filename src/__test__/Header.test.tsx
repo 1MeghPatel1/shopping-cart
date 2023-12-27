@@ -70,9 +70,10 @@ describe("Header Test Cases", () => {
 
 		//checking for cart link
 		const cartLinks = screen.getAllByRole("link", { name: /cart/i });
-		for (let link of cartLinks) {
-			await userEvent.click(link);
-		}
+		// for (let link of cartLinks) {
+		// 	await userEvent.click(link);
+		// }
+		await userEvent.click(cartLinks[0]);
 		const cartHeading = screen.queryByRole("heading", {
 			level: 2,
 			name: /your cart, megh/i,

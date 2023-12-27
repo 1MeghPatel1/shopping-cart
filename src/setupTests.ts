@@ -7,6 +7,12 @@ import "@testing-library/jest-dom";
 import "intersection-observer"; // Import the polyfill
 import "jest-localstorage-mock";
 
+//Mocking inetersection observer
+import { configMocks } from "jsdom-testing-mocks";
+import { act } from "./test-utils";
+
+configMocks({ act });
+
 //Mock Server
 import { server } from "./mocks/server";
 
