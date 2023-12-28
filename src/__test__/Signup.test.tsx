@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import Auth from "../components/authentication/Auth";
 import { userEvent } from "@testing-library/user-event";
 import { MemoryRouter, Navigate, Route, Routes } from "react-router-dom";
@@ -24,6 +24,10 @@ const SignUpTestComponent = () => {
 //Sign Up Page Tests
 
 describe("Sign Up Tests", () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
+
 	test("Render SignUp Page", () => {
 		render(<SignUpTestComponent />);
 		const SignUpHeading = screen.getByRole("heading", {
@@ -68,12 +72,22 @@ describe("Sign Up Tests", () => {
 	test("when user enter details into form", async () => {
 		render(<SignUpTestComponent />);
 		const inputElements = screen.queryAllByRole("textbox");
-		inputElements.forEach((element) => {
-			fireEvent.change(element, { target: { value: "Knight" } });
-		});
-		inputElements.forEach((element) => {
-			expect(element).toHaveValue("Knight");
-		});
+		for (let input of inputElements) {
+			await userEvent.type(input, "Megh");
+			expect(input).toHaveValue("Megh");
+		}
+
+		const passwordInput = screen.getByPlaceholderText(
+			/Please Enter Your password/i
+		);
+		await userEvent.type(passwordInput, "Megh@123");
+		expect(passwordInput).toHaveValue("Megh@123");
+
+		const confirmPasswordInput = screen.getByPlaceholderText(
+			/Please Enter Your ConfirmPassword/i
+		);
+		await userEvent.type(confirmPasswordInput, "Megh@123");
+		expect(confirmPasswordInput).toHaveValue("Megh@123");
 	});
 
 	test("when user click for Login page button", async () => {
@@ -91,13 +105,31 @@ describe("Sign Up Tests", () => {
 		expect(signUpElement).toBeInTheDocument();
 	});
 
-	test("When User Clicks SignUp Button", async () => {
+	test("When User Clicks SignUp Button without proper inputs", async () => {
 		render(<SignUpTestComponent />);
 		const SignUpButton = screen.getByRole("button", { name: /register/i });
 		expect(SignUpButton).toBeInTheDocument();
+
+		const firstName = screen.getByPlaceholderText(
+			/Please Enter Your First Name/i
+		);
+		const lastName = screen.getByLabelText(/Last Name/i);
+		const email = screen.getByRole("textbox", { name: /email/i });
+		const passwordInput = screen.getByPlaceholderText(
+			/Please Enter Your password/i
+		);
+		const confirmPasswordInput = screen.getByPlaceholderText(
+			/Please Enter Your ConfirmPassword/i
+		);
+
+		await userEvent.type(firstName, "Me");
+		await userEvent.type(lastName, "pa");
+		await userEvent.type(email, "Megh");
+		await userEvent.type(passwordInput, "Megh1");
+		await userEvent.type(confirmPasswordInput, "Meg");
 		waitFor(async () => {
 			await userEvent.click(SignUpButton);
-			expect(SignUpMock).toHaveBeenCalled();
+			expect(SignUpMock).not.toHaveBeenCalled();
 		});
 	});
 
@@ -106,19 +138,68 @@ describe("Sign Up Tests", () => {
 		const SignUpButton = screen.getByRole("button", { name: /register/i });
 		expect(SignUpButton).toBeInTheDocument();
 
-		const mockCredentials = {
-			firstName: "Megh",
-			lastName: "Patel",
-			email: "megh@gmail.com",
-			password: "Megh@123",
-		};
+		const firstName = screen.getByPlaceholderText(
+			/Please Enter Your First Name/i
+		);
+		const lastName = screen.getByLabelText(/Last Name/i);
+		const email = screen.getByRole("textbox", { name: /email/i });
+		const passwordInput = screen.getByPlaceholderText(
+			/Please Enter Your password/i
+		);
+		const confirmPasswordInput = screen.getByPlaceholderText(
+			/Please Enter Your ConfirmPassword/i
+		);
 
-		const res = await apiServices.signUpRequest(mockCredentials);
+		await userEvent.type(firstName, "Megh");
+		await userEvent.type(lastName, "Patel");
+		await userEvent.type(email, "megh@gmail.com");
+		await userEvent.type(passwordInput, "Megh@123");
+		await userEvent.type(confirmPasswordInput, "Megh@123");
 
-		expect(res).toEqual({
-			id: 1,
-			username: "Megh",
-			message: "SignUp Successfully",
+		expect(firstName).toHaveValue("Megh");
+		expect(lastName).toHaveValue("Patel");
+		expect(email).toHaveValue("megh@gmail.com");
+		expect(passwordInput).toHaveValue("Megh@123");
+		expect(confirmPasswordInput).toHaveValue("Megh@123");
+
+		await waitFor(async () => {
+			await userEvent.click(SignUpButton);
+			expect(SignUpMock).toHaveBeenCalled();
+			const navLink = screen.getByText("Already Registered?");
+			expect(navLink).toBeInTheDocument();
+			expect(navLink).toHaveAttribute("href", "/auth/login");
 		});
+		// expect(res).toEqual({
+		// 	id: 1,
+		// 	username: "Megh",
+		// 	message: "SignUp Successfully",
+		// });
+	});
+
+	test("password visibility test for sign up page", async () => {
+		const { container } = render(<SignUpTestComponent />);
+		const eyeButtonPassword = container.querySelector(
+			".auth-form__password:nth-child(5) button"
+		) as HTMLButtonElement;
+		const eyeButtonConfirmPassword = container.querySelector(
+			".auth-form__password:nth-child(6) button"
+		) as HTMLButtonElement;
+
+		const passwordInput = screen.getByPlaceholderText(
+			/please enter your password/i
+		);
+		const confirmPasswordInput = screen.getByLabelText(/confirm password/i);
+
+		expect(passwordInput).toHaveAttribute("type", "password");
+		await userEvent.click(eyeButtonPassword);
+		expect(passwordInput).toHaveAttribute("type", "text");
+		await userEvent.click(eyeButtonPassword);
+		expect(passwordInput).toHaveAttribute("type", "password");
+
+		expect(confirmPasswordInput).toHaveAttribute("type", "password");
+		await userEvent.click(eyeButtonConfirmPassword);
+		expect(confirmPasswordInput).toHaveAttribute("type", "text");
+		await userEvent.click(eyeButtonConfirmPassword);
+		expect(confirmPasswordInput).toHaveAttribute("type", "password");
 	});
 });

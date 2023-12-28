@@ -69,6 +69,9 @@ describe("login-tests", () => {
 			name: /new here\? let's get you started/i,
 		});
 
+		expect(signUpButton).toBeInTheDocument();
+		expect(signUpButton).toHaveAttribute("href", "/auth/signup");
+
 		await userEvent.click(signUpButton);
 
 		const signUpElement = await screen.findByText(/Sign Up/i);
@@ -108,6 +111,36 @@ describe("login-tests", () => {
 		);
 	});
 
+	test("Reject Login Request and throw error", async () => {
+		jest.clearAllMocks();
+		render(<LoginFormTestComponent />);
+
+		const logInButton = screen.getByRole("button", {
+			name: /Log in/i,
+		});
+
+		expect(logInButton).toBeInTheDocument();
+		await waitFor(async () => {
+			await userEvent.click(logInButton);
+			expect(loginMock).toHaveBeenCalled();
+		});
+
+		expect(localStorage.setItem).not.toHaveBeenCalledWith(
+			"userInfo",
+			JSON.stringify({
+				id: 1,
+				firstName: "Megh",
+				lastName: "Patel",
+				email: "megh@gmail.com",
+				refreshToken:
+					"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozMywiZmlyc3ROYW1lIjoiTWVnaCIsImxhc3ROYW1lIjoiUGF0ZWwiLCJlbWFpbCI6Im1lZ2hwYXRlbEBnbWFpbC5jb20ifSwiaWF0IjoxNzAzMjUzMjk0LCJle",
+				accessToken:
+					"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7I…wOTR9.CkWyQL2gHJfBiKqye8fOnWLREEmhGz2e9OQzVzgDsp4",
+			})
+		);
+		jest.restoreAllMocks();
+	});
+
 	test("When User Clicks Login Button and Login Request is sent", async () => {
 		render(<LoginFormTestComponent />);
 		const logInButton = screen.getByRole("button", {
@@ -136,5 +169,17 @@ describe("login-tests", () => {
 				},
 			});
 		});
+	});
+
+	test("password visibility test for Login page", async () => {
+		const { container } = render(<LoginFormTestComponent />);
+		const eyeButton = container.querySelector(
+			".auth-form__group button"
+		) as HTMLButtonElement;
+
+		const passwordInput = screen.getByLabelText(/password/i);
+		await userEvent.click(eyeButton);
+		expect(passwordInput).toHaveAttribute("type", "text");
+		await userEvent.click(eyeButton);
 	});
 });

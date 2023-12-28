@@ -69,4 +69,46 @@ describe("Protected Route Tests for App", () => {
 		});
 		expect(cartHeading).toBeInTheDocument();
 	});
+
+	test("Testing if User is Not Authenticated and does it redirects to login", async () => {
+		localStorage.removeItem("userInfo");
+		await act(async () => {
+			await render(<ProtectedRouteTestComponent initialEntry="/app" />);
+		});
+
+		const homePageHeading = screen.queryByRole("heading", {
+			name: /premium luxury products at your finger tips!/i,
+		});
+		expect(homePageHeading).not.toBeInTheDocument();
+
+		const loginElement = await screen.findByText(/Login/i);
+		expect(loginElement).toBeInTheDocument();
+	});
+
+	test("Testing if UserIfo is in Local Storage but it doesn't have accessToken", async () => {
+		localStorage.setItem(
+			"userInfo",
+			JSON.stringify({
+				id: 1,
+				firstName: "Megh",
+				lastName: "Patel",
+				email: "",
+				refreshToken:
+					"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozMywiZmlyc3ROYW1lIjoiTWVnaCIsImxhc3ROYW1lIjoiUGF0ZWwiLCJlbWFpbCI6Im1lZ2hwYXRlbEBnbWFpbC5jb20ifSwiaWF0IjoxNzAzMjUzMjk0LCJle",
+				accessToken: "",
+			})
+		);
+
+		await act(async () => {
+			await render(<ProtectedRouteTestComponent initialEntry="/app" />);
+		});
+
+		const homePageHeading = screen.queryByRole("heading", {
+			name: /premium luxury products at your finger tips!/i,
+		});
+		expect(homePageHeading).not.toBeInTheDocument();
+
+		const loginElement = await screen.findByText(/Login/i);
+		expect(loginElement).toBeInTheDocument();
+	});
 });

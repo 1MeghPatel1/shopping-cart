@@ -11,7 +11,7 @@ type propsType = {
 	children: ReactNode;
 	onClick?(): void;
 	type: keyof classObj;
-	isDisabled: boolean;
+	isDisabled?: boolean;
 };
 
 const classObjValue: classObj = {

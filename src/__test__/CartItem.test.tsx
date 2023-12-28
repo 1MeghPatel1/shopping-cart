@@ -3,9 +3,11 @@ import Cart from "../components/cart/CartPage";
 import { act, render, screen } from "../test-utils";
 import userEvent from "@testing-library/user-event";
 import * as apiServices from "../services/apiServices";
+import { server } from "../mocks/server";
 
 const deleteCartQtyMock = jest.spyOn(apiServices, "deleteCartQty");
 const addCartQtyMock = jest.spyOn(apiServices, "postCart");
+const getCartMock = jest.spyOn(apiServices, "getCart");
 const deleteCartProductMock = jest.spyOn(apiServices, "deleteCartProduct");
 
 describe("cart-item tests", () => {
@@ -74,5 +76,147 @@ describe("cart-item tests", () => {
 
 		await userEvent.click(cartItemDeleteBtn);
 		expect(deleteCartProductMock).toHaveBeenCalled();
+
+		expect(getCartMock).toHaveBeenCalled();
+	});
+
+	test("testing if add qty. and minus qty. throws error", async () => {
+		deleteCartQtyMock.mockReset();
+		deleteCartQtyMock.mockResolvedValueOnce({
+			success: false,
+			message: "something went wrong",
+		});
+
+		addCartQtyMock.mockReset();
+		addCartQtyMock.mockResolvedValueOnce({
+			success: false,
+			message: "something went wrong",
+		});
+
+		let cartContainer;
+		await act(async () => {
+			const { container } = await render(
+				<MemoryRouter>
+					<Cart />
+				</MemoryRouter>
+			);
+			cartContainer = container;
+		});
+
+		getCartMock.mockReset();
+
+		const cartItemMinusBtn = cartContainer!.querySelector(
+			".cart__qty-container button:first-child"
+		);
+
+		const cartItemAddBtn = cartContainer!.querySelector(
+			".cart__qty-container button:last-child"
+		);
+
+		await userEvent.click(cartItemMinusBtn);
+		expect(deleteCartQtyMock).toHaveBeenCalled();
+
+		await userEvent.click(cartItemAddBtn);
+		expect(addCartQtyMock).toHaveBeenCalled();
+
+		expect(getCartMock).not.toHaveBeenCalled();
+	});
+
+	test("testing if add qty. and minus qty. is successful but getting cart state from api throw error", async () => {
+		deleteCartQtyMock.mockReset();
+		addCartQtyMock.mockReset();
+		let cartContainer;
+		await act(async () => {
+			const { container } = await render(
+				<MemoryRouter>
+					<Cart />
+				</MemoryRouter>
+			);
+			cartContainer = container;
+		});
+
+		getCartMock.mockReset();
+		getCartMock.mockResolvedValueOnce({
+			success: false,
+			message: "something went wrong",
+		});
+
+		const cartItemMinusBtn = cartContainer!.querySelector(
+			".cart__qty-container button:first-child"
+		);
+
+		const cartItemAddBtn = cartContainer!.querySelector(
+			".cart__qty-container button:last-child"
+		);
+
+		await userEvent.click(cartItemMinusBtn);
+		expect(deleteCartQtyMock).toHaveBeenCalled();
+
+		await userEvent.click(cartItemAddBtn);
+		expect(addCartQtyMock).toHaveBeenCalled();
+
+		expect(getCartMock).toHaveBeenCalled();
+	});
+
+	test("when an error occurrs while deleting product", async () => {
+		deleteCartProductMock.mockReset();
+
+		deleteCartProductMock.mockResolvedValueOnce({
+			success: false,
+			message: "something went wrong",
+		});
+
+		let cartContainer;
+		await act(async () => {
+			const { container } = await render(
+				<MemoryRouter>
+					<Cart />
+				</MemoryRouter>
+			);
+			cartContainer = container;
+		});
+
+		getCartMock.mockReset();
+		const cartItemDeleteBtn = cartContainer!.querySelector(
+			".cart__actions .btn--delete"
+		);
+
+		expect(cartItemDeleteBtn).toBeInTheDocument();
+		await userEvent.click(cartItemDeleteBtn);
+		expect(deleteCartProductMock).toHaveBeenCalled();
+		expect(getCartMock).not.toHaveBeenCalled();
+	});
+
+	test("when deleting product is successful but getting cart from api fails", async () => {
+		deleteCartProductMock.mockReset();
+
+		deleteCartProductMock.mockResolvedValueOnce({
+			success: true,
+			message: "deleted successfully",
+		});
+
+		let cartContainer;
+		await act(async () => {
+			const { container } = await render(
+				<MemoryRouter>
+					<Cart />
+				</MemoryRouter>
+			);
+			cartContainer = container;
+		});
+
+		getCartMock.mockReset();
+		getCartMock.mockResolvedValueOnce({
+			success: false,
+			message: "something went wrong",
+		});
+		const cartItemDeleteBtn = cartContainer!.querySelector(
+			".cart__actions .btn--delete"
+		);
+
+		expect(cartItemDeleteBtn).toBeInTheDocument();
+		await userEvent.click(cartItemDeleteBtn);
+		expect(deleteCartProductMock).toHaveBeenCalled();
+		expect(getCartMock).toHaveBeenCalled();
 	});
 });
