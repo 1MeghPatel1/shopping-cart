@@ -16,7 +16,7 @@ const App = () => {
 		<Provider store={store}>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Navigate replace to="/auth" />} />
+					<Route index path="/" element={<Navigate replace to="/app" />} />
 					<Route path="/auth" element={<Auth />}>
 						<Route index element={<Navigate replace to="login" />} />
 						<Route path="login" element={<Login />} />

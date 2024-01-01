@@ -22,12 +22,12 @@ const LoginForm = () => {
 	const onLogin = (data: userLogIn) => {
 		setIsDisabled(true);
 		logInRequest(data)
-			.then((res): void => {
+			.then(async (res) => {
 				if (!res.success) {
 					toast.error(res.message);
 					return;
 				}
-				localStorage.setItem("userInfo", JSON.stringify(res.data));
+				await localStorage.setItem("userInfo", JSON.stringify(res.data));
 				navigate("/app");
 				toast.success(res.message);
 			})

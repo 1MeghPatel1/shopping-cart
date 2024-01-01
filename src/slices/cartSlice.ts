@@ -30,7 +30,7 @@ const cartSlice = createSlice({
 				return localCartItem;
 			});
 			state.totalPrice = state.cart.reduce((acc, curr) => {
-				return (acc = acc + curr.totalPrice);
+				return (acc = acc + curr.totalPrice!);
 			}, 0);
 			state.totalProducts = state.cart.length;
 		},
