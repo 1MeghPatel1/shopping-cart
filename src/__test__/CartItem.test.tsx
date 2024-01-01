@@ -3,7 +3,6 @@ import Cart from "../components/cart/CartPage";
 import { act, render, screen } from "../test-utils";
 import userEvent from "@testing-library/user-event";
 import * as apiServices from "../services/apiServices";
-import { server } from "../mocks/server";
 
 const deleteCartQtyMock = jest.spyOn(apiServices, "deleteCartQty");
 const addCartQtyMock = jest.spyOn(apiServices, "postCart");
@@ -124,7 +123,16 @@ describe("cart-item tests", () => {
 
 	test("testing if add qty. and minus qty. is successful but getting cart state from api throw error", async () => {
 		deleteCartQtyMock.mockReset();
+		deleteCartQtyMock.mockResolvedValueOnce({
+			success: true,
+			message: "successfylly decreased qty",
+		});
 		addCartQtyMock.mockReset();
+		addCartQtyMock.mockResolvedValueOnce({
+			success: true,
+			message: "successfylly increased qty",
+		});
+
 		let cartContainer;
 		await act(async () => {
 			const { container } = await render(

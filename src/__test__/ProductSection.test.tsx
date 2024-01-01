@@ -2,7 +2,6 @@ import userEvent from "@testing-library/user-event";
 import { act, render, screen } from "../test-utils";
 import ProductSection from "../components/product/ProductSection";
 import * as apiServices from "../services/apiServices";
-import store from "../store";
 
 const searchProductReqMock = jest.spyOn(apiServices, "getProduct");
 
@@ -82,10 +81,8 @@ describe("Products Tests", () => {
 	});
 
 	test("testing products search", async () => {
-		let productsContainer;
 		await act(async () => {
-			const { container } = await render(<ProductSection />);
-			productsContainer = container;
+			await render(<ProductSection />);
 		});
 
 		const searchProductInput = screen.getByPlaceholderText(

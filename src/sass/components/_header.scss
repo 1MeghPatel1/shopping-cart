@@ -8,6 +8,10 @@
 	box-shadow: var(--box-shadow-light);
 	z-index: 100;
 
+	@include respond("phone") {
+		padding: 1rem 3rem 1rem 3rem;
+	}
+
 	&__logo-container {
 		display: flex;
 		align-items: center;
@@ -20,12 +24,21 @@
 		position: relative;
 		height: 10rem;
 		width: 10rem;
+		@include respond("phone") {
+			width: 8rem;
+			height: 8rem;
+		}
 	}
 	&__logo-img {
 		width: 12rem;
 		position: absolute;
 		left: -9px;
 		top: -4px;
+		@include respond("phone") {
+			width: 10rem;
+			left: -8px;
+			top: -5px;
+		}
 	}
 	&__logo-text {
 		font-size: 2rem;

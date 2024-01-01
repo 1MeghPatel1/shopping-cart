@@ -28,7 +28,30 @@ describe("Tests for Individual Product Item", () => {
 		expect(postCartMock).toHaveBeenCalledTimes(7);
 		postCartMock.mockReset();
 	});
+
+	test("When Error occurrs while Adding Product Item to cart", async () => {
+		postCartMock.mockReset();
+		postCartMock.mockResolvedValueOnce({
+			success: false,
+			message: "something went wrong",
+		});
+		let productsContainer;
+		await act(async () => {
+			const { container } = await render(<ProductSection />);
+			productsContainer = container;
+		});
+
+		const AddtoCartButtons = productsContainer!.querySelectorAll(
+			".products__item-details-box button"
+		);
+
+		await userEvent.click(AddtoCartButtons[0]);
+
+		expect(postCartMock).toHaveBeenCalled();
+	});
+
 	test("rendering 1st product and displaying its quantity and add & minus button functionality", async () => {
+		postCartMock.mockReset();
 		let productContainer;
 		await act(async () => {
 			const { container } = await render(

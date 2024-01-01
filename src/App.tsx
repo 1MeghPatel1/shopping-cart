@@ -39,10 +39,6 @@ const App = () => {
 						},
 						success: {
 							duration: 3000,
-							theme: {
-								primary: "green",
-								secondary: "black",
-							},
 						},
 						error: {
 							duration: 5000,

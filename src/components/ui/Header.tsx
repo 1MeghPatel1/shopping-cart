@@ -1,10 +1,11 @@
+import { MouseEventHandler } from "react";
 import toast from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Header = () => {
 	const navigate = useNavigate();
 
-	const handleLogOut = (e: MouseEvent) => {
+	const handleLogOut: MouseEventHandler<HTMLButtonElement> = (e) => {
 		e.preventDefault();
 		localStorage.removeItem("userInfo");
 		navigate("/auth/login");
@@ -42,7 +43,7 @@ const Header = () => {
 							Cart
 						</span>
 					</NavLink>
-					<NavLink to="/" className="header__nav-item">
+					<NavLink to="/profile" className="header__nav-item">
 						<span className="header__nav-link">Your Profile</span>
 					</NavLink>
 					<button onClick={handleLogOut} className="header__nav-item">

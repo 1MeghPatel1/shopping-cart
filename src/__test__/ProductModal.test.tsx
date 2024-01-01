@@ -1,10 +1,9 @@
 import userEvent from "@testing-library/user-event";
-import { act, getByText, render, screen } from "../test-utils";
+import { act, render, screen } from "../test-utils";
 import ProductSection from "../components/product/ProductSection";
 import ProductModal from "../components/product/ProductModal";
 import store from "../store";
 import { assignCart } from "../slices/cartSlice";
-import UpdateItemQuantity from "./../components/cart/UpdateItemQuantity";
 
 describe("testing Product Modal", () => {
 	test("opening product modal when a product is clicked and closing when close btn is clicked", async () => {

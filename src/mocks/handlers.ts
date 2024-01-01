@@ -80,7 +80,7 @@ export const handlers = [
 	),
 	rest.get(
 		"https://api-server-onboarding-task-shopping-cart.onrender.com/cart",
-		async (req, res, ctx) => {
+		async (_, res, ctx) => {
 			return res(
 				ctx.status(200),
 				ctx.json({
@@ -110,7 +110,7 @@ export const handlers = [
 	),
 	rest.get(
 		"https://api-server-onboarding-task-shopping-cart.onrender.com/products",
-		async (req, res, ctx) => {
+		async (_, res, ctx) => {
 			return res(
 				ctx.status(200),
 				ctx.json({
@@ -141,19 +141,19 @@ export const handlers = [
 	),
 	rest.post(
 		"https://api-server-onboarding-task-shopping-cart.onrender.com/cart",
-		async (req, res, ctx) => {
+		async (_, res, ctx) => {
 			return res(ctx.status(200), ctx.json(commonMockResponse));
 		}
 	),
 	rest.delete(
 		"https://api-server-onboarding-task-shopping-cart.onrender.com/cart",
-		async (req, res, ctx) => {
+		async (_, res, ctx) => {
 			return res(ctx.status(200), ctx.json(commonMockResponse));
 		}
 	),
 	rest.delete(
 		"https://api-server-onboarding-task-shopping-cart.onrender.com/cart/product",
-		async (req, res, ctx) => {
+		async (_, res, ctx) => {
 			return res(ctx.status(200), ctx.json(commonMockResponse));
 		}
 	),

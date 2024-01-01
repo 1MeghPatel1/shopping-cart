@@ -8,7 +8,7 @@ export type FormValues = {
 	confirmPassword: string;
 };
 
-export const schema: ZodType<FormValues> = z
+export const schema: ZodType = z
 	.object({
 		firstName: z
 			.string({

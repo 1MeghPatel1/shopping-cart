@@ -13,6 +13,7 @@ export type ProductType = {
 	name: string;
 	price: number;
 	qty: number;
+	totalPrice?: number;
 };
 
 type ProductPropsType = ProductType & {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ProductItem, { ProductPropsType } from "./ProductItem";
+import ProductItem from "./ProductItem";
 import ProductModal from "./ProductModal";
 import { useSelector } from "react-redux";
 

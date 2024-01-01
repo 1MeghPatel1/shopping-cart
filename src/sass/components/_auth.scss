@@ -30,10 +30,14 @@
 				#fff 30%,
 				var(--primary-brand-color) 30%
 			);
+			min-height: 100dvh;
 			padding: 4rem 3rem;
-			height: 100dvh;
 			justify-content: center;
 			border-radius: 0;
+		}
+
+		@include respond("phone") {
+			padding: 3rem 1rem;
 		}
 	}
 
@@ -97,6 +101,10 @@
 
 				&:hover path {
 					fill: var(--secondary-brand-color);
+				}
+
+				@include respond("phone") {
+					top: 30px;
 				}
 			}
 
